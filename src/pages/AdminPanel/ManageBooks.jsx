@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AdminSidebar from "../../components/AdminSidebar";
 
-const API_URL = "http://localhost:5000/api/admin/books";
+const API_URL = `https://litverse-backend.vercel.app/api/admin/books`;
 
 const ManageBooks = () => {
   const [books, setBooks] = useState([]);

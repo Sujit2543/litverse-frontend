@@ -8,6 +8,7 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
   const [showForgotModal, setShowForgotModal] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
   const [resetMessage, setResetMessage] = useState("");
+  const API_URL = "https://litverse-backend.vercel.app";
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,7 +16,7 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -45,7 +46,7 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/forgot-password", {
+      const response = await fetch(`${API_URL}/forgot-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: resetEmail }),

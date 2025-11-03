@@ -1,17 +1,42 @@
-// src/services/api.js
-const API_URL = "http://localhost:5000"; // your backend base URL
+// // src/services/api.js
+// const API_URL = "https://litverse-backend.vercel.app/"; // your backend base URL
+
+// // --- USER AUTHENTICATION ---
+
+// // Register user
+// export const registerUser = async (userData) => {
+//   const res = await fetch(`${APIURL}/register`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(userData),
+//   });
+//   return res.json();
+// };
+
+// src/services/geminiApi.js
+const API_URL = "https://litverse-backend.vercel.app"; // ✅ no trailing slash
 
 // --- USER AUTHENTICATION ---
-
-// Register user
 export const registerUser = async (userData) => {
-  const res = await fetch(`${API_URL}/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userData),
-  });
-  return res.json();
+  try {
+    const res = await fetch(`${API_URL}/api/register`, { // ✅ correct variable + correct route
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Registration failed");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("Register API Error:", error);
+    return { success: false, message: error.message || "Server error" };
+  }
 };
+
 
 // Login user
 export const loginUser = async (credentials) => {
