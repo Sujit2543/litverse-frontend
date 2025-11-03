@@ -1,8 +1,9 @@
 import React from 'react';
 
 // --- 4. Navigation Component ---
-export default function Navigation({ currentPage, onPageChange, myLibraryCount, myWishlistCount }) {
-  const navItems = ['Home', 'Explore', 'My Library', 'User Dashboard', 'Community', 'Admin Panel','Request a book'];
+export default function Navigation({ currentPage, onPageChange, myLibraryCount, myWishlistCount, isAdmin }) {
+  const baseNavItems = ['Home', 'Explore', 'My Library', 'User Dashboard', 'Community', 'Request a book'];
+  const navItems = isAdmin ? [...baseNavItems, 'Admin Panel'] : baseNavItems;
   
   return (
     <nav className="w-full bg-gray-100 shadow-sm dark:bg-gray-900">

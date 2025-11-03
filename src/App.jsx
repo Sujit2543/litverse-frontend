@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 // Styles
@@ -27,7 +27,7 @@ import BookReaderPage from "./pages/BookReaderPage";
 import AudiobookPlayerPage from "./pages/AudiobookPlayerPage";
 import UserDashboardPage from "./pages/UserDashboardPage";
 import CommunityPage from "./pages/CommunityPage";
-import AdminPanelPage from "./pages/AdminPanel";
+import AdminPanelPage from "./pages/AdminPanel/AdminPanelPage";
  // ✅ Admin Panel
 
 
@@ -219,6 +219,28 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
   const [username, setUsername] = useState("");
   const [isAdmin, setIsAdmin] = useState(false); // ✅ New admin flag
+
+  // Check for Google OAuth callback parameters
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    const userParam = urlParams.get('user');
+    
+    if (token && userParam) {
+      try {
+        const user = JSON.parse(decodeURIComponent(userParam));
+        localStorage.setItem("token", token);
+        setIsLoggedIn(true);
+        setUsername(user.firstName);
+        setIsAdmin(false);
+        
+        // Clean up URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+      } catch (error) {
+        console.error("Error parsing Google OAuth callback:", error);
+      }
+    }
+  }, []);
   const [currentView, setCurrentView] = useState({ page: "Home" });
   const [myLibrary, setMyLibrary] = useState([]);
   const [myWishlist, setMyWishlist] = useState([]);

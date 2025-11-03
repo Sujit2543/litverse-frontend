@@ -2,23 +2,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// const API_URL = "http://localhost:5000/api/admin/auth/login"; // change for production
-const APIURL = "https://bookpoint-backend.vercel.app";
-
+// ✅ Correct backend URL (no /auth)
+const API_URL = "https://bookpoint-backend.vercel.app/admin/login";
 
 const AdminLogin = ({ setAdminToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
- 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(API_URL, { email, password });
       localStorage.setItem("adminToken", res.data.token);
       setAdminToken(res.data.token);
-      alert("Login successful!");
+      alert("✅ Login successful!");
     } catch (err) {
+      console.error("Admin login error:", err.response?.data || err.message);
       setError(err.response?.data?.message || "Login failed");
     }
   };
