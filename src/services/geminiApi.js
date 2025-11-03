@@ -1,25 +1,8 @@
-// // src/services/api.js
-// const API_URL = "https://litverse-backend.vercel.app/"; // your backend base URL
+const API_URL = "https://litverse-backend.vercel.app"; 
 
-// // --- USER AUTHENTICATION ---
-
-// // Register user
-// export const registerUser = async (userData) => {
-//   const res = await fetch(`${APIURL}/register`, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(userData),
-//   });
-//   return res.json();
-// };
-
-// src/services/geminiApi.js
-const API_URL = "https://litverse-backend.vercel.app"; // ✅ no trailing slash
-
-// --- USER AUTHENTICATION ---
 export const registerUser = async (userData) => {
   try {
-    const res = await fetch(`${API_URL}/api/register`, { // ✅ correct variable + correct route
+    const res = await fetch(`${API_URL}/register`, {  // ✅ remove "api"
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -36,6 +19,8 @@ export const registerUser = async (userData) => {
     return { success: false, message: error.message || "Server error" };
   }
 };
+
+
 
 
 // Login user
