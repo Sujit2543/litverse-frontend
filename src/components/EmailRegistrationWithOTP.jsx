@@ -40,7 +40,7 @@ const EmailRegistrationWithOTP = ({ onSuccess, onError }) => {
     setLoading(true);
     try {
       const API_URL = process.env.NODE_ENV === 'production' 
-        ? "https://your-backend.vercel.app" 
+        ? "https://litverse-backend.vercel.app" 
         : "http://localhost:5000";
 
       const response = await fetch(`${API_URL}/register/send-otp`, {
@@ -79,7 +79,7 @@ const EmailRegistrationWithOTP = ({ onSuccess, onError }) => {
     setLoading(true);
     try {
       const API_URL = process.env.NODE_ENV === 'production' 
-        ? "https://your-backend.vercel.app" 
+        ? "https://litverse-backend.vercel.app" 
         : "http://localhost:5000";
 
       const response = await fetch(`${API_URL}/register/verify-otp`, {
