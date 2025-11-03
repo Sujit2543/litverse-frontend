@@ -84,9 +84,7 @@ const Register = ({ onBackToLogin }) => {
     }
 
     try {
-      const API_URL = process.env.NODE_ENV === 'production' 
-        ? "https://litverse-backend.vercel.app" 
-        : "http://localhost:5000";
+      const API_URL = "https://litverse-backend.vercel.app";
       
       const response = await fetch(`${API_URL}/register`, {
         method: "POST",
