@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// const API_URL = "http://localhost:5000/api/admin/auth/login"; // change for production
-const APIURL = "https://bookpoint-backend.vercel.app";
+const APIURL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 
 const AdminLogin = ({ setAdminToken }) => {

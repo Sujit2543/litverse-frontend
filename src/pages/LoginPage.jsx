@@ -15,7 +15,7 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -45,7 +45,7 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/forgot-password", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/forgot-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: resetEmail }),
