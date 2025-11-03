@@ -5,7 +5,7 @@ const FacebookLoginComponent = ({ onSuccess, onError }) => {
   const responseFacebook = async (response) => {
     if (response.accessToken) {
       try {
-        const result = await fetch('http://localhost:5000/auth/facebook/verify', {
+        const result = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/facebook/verify`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

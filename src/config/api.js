@@ -1,12 +1,12 @@
 // API Configuration
 const API_CONFIG = {
-  // Direct backend URL
-  BASE_URL: "https://litverse-backend.vercel.app",
+  // Environment-based backend URL
+  BASE_URL: import.meta.env.VITE_API_URL || "http://localhost:5000",
     
   // OAuth URLs
-  GOOGLE_OAUTH: "https://litverse-backend.vercel.app/auth/google",
+  GOOGLE_OAUTH: `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/auth/google`,
     
-  FACEBOOK_OAUTH: "https://litverse-backend.vercel.app/auth/facebook"
+  FACEBOOK_OAUTH: `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/auth/facebook`
 };
 
 export default API_CONFIG;

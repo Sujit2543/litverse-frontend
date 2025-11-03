@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 // ✅ Correct backend URL (no /auth)
-const API_URL = "https://litverse-backend.vercel.app/admin/login";
+const API_URL = `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/admin/login`;
 
 const AdminLogin = ({ setAdminToken }) => {
   const [email, setEmail] = useState("");

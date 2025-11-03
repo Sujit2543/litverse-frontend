@@ -22,7 +22,7 @@ export default function HomePage(props) {
 
   const fetchBooks = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/books?limit=8");
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/books?limit=8`);
       if (response.ok) {
         const data = await response.json();
         setBooks(data.books);
@@ -34,7 +34,7 @@ export default function HomePage(props) {
 
   const fetchMockTests = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/mock-tests?limit=4");
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/mock-tests?limit=4`);
       if (response.ok) {
         const data = await response.json();
         setMockTests(data.tests);
