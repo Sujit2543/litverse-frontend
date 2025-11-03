@@ -52,7 +52,7 @@ const EmailOTPLogin = ({ onSuccess, onError }) => {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/auth/email/send-otp', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/email/send-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const EmailOTPLogin = ({ onSuccess, onError }) => {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/auth/email/verify-otp', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/email/verify-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

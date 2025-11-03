@@ -36,7 +36,7 @@ const GoogleSignIn = ({ onSuccess, onError }) => {
 
   const handleCredentialResponse = async (response) => {
     try {
-      const result = await fetch('http://localhost:5000/auth/google/verify', {
+      const result = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/google/verify`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

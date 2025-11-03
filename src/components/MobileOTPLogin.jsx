@@ -31,7 +31,7 @@ const MobileOTPLogin = ({ onSuccess, onError }) => {
     setLoading(true);
     try {
       const fullPhoneNumber = selectedCountryCode + phoneNumber;
-      const response = await fetch('http://localhost:5000/auth/mobile/send-otp', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/mobile/send-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const MobileOTPLogin = ({ onSuccess, onError }) => {
     setLoading(true);
     try {
       const fullPhoneNumber = selectedCountryCode + phoneNumber;
-      const response = await fetch('http://localhost:5000/auth/mobile/verify-otp', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/mobile/verify-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

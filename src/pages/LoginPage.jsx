@@ -337,7 +337,7 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
               type="button"
               onClick={() => {
                 try {
-                  window.open('http://localhost:5000/auth/google', '_self');
+                  window.open(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/google`, '_self');
                 } catch (error) {
                   setError("Google login is not available in demo mode");
                 }
@@ -358,7 +358,7 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
               type="button"
               onClick={() => {
                 try {
-                  window.open('http://localhost:5000/auth/facebook', '_self');
+                  window.open(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/facebook`, '_self');
                 } catch (error) {
                   setError("Facebook login is not available in demo mode");
                 }

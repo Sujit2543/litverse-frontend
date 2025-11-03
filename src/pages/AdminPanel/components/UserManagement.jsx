@@ -18,7 +18,7 @@ export default function UserManagement() {
       setLoading(true);
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/admin/users?page=${currentPage}&search=${searchTerm}`,
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin/users?page=${currentPage}&search=${searchTerm}`,
         {
           headers: {
             "Authorization": `Bearer ${token}`
@@ -47,7 +47,7 @@ export default function UserManagement() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/admin/users/${editingUser._id}`,
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin/users/${editingUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -75,7 +75,7 @@ export default function UserManagement() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/admin/users/${userId}`,
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin/users/${userId}`,
         {
           method: "DELETE",
           headers: {
