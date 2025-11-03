@@ -84,7 +84,8 @@ const Register = ({ onBackToLogin }) => {
     }
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      // const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+        const API_URL = "https://litverse-backend.vercel.app";
       
       const response = await fetch(`${API_URL}/register`, {
         method: "POST",

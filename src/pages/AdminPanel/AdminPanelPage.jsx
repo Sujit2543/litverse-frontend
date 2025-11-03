@@ -16,7 +16,7 @@ export default function AdminPanelPage() {
   const fetchAdminProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/admin/profile", {
+      const response = await fetch("https://litverse-backend.vercel.app/api/books?limit=8/api/admin/profile", {
         headers: {
           "Authorization": `Bearer ${token}`
         }

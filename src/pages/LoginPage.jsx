@@ -14,7 +14,8 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
   const [resetMessage, setResetMessage] = useState("");
   const [isAdminLogin, setIsAdminLogin] = useState(false);
   const [loginMethod, setLoginMethod] = useState('email'); // 'email', 'google', 'facebook', 'mobile', 'email-otp'
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  // const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = "https://litverse-backend.vercel.app";
 
   // ✅ Email validation function (same as Register)
   const isValidEmail = (email) => {
