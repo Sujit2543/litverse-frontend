@@ -1,4 +1,5 @@
-const API_URL = "https://litverse-backend.vercel.app"; 
+// src/services/api.js
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000"; // your backend base URL
 
 export const registerUser = async (userData) => {
   try {
