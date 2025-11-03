@@ -1,17 +1,28 @@
 // src/services/api.js
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000"; // your backend base URL
 
-// --- USER AUTHENTICATION ---
-
-// Register user
 export const registerUser = async (userData) => {
-  const res = await fetch(`${API_URL}/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userData),
-  });
-  return res.json();
+  try {
+    const res = await fetch(`${API_URL}/register`, {  // ✅ remove "api"
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Registration failed");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("Register API Error:", error);
+    return { success: false, message: error.message || "Server error" };
+  }
 };
+
+
+
 
 // Login user
 export const loginUser = async (credentials) => {
