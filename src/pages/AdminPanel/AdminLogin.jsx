@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 // ✅ Correct backend URL (no /auth)
-const API_URL = "https://bookpoint-backend.vercel.app/admin/login";
+const API_URL = "https://litverse-backend.vercel.app/admin/login";
 
 const AdminLogin = ({ setAdminToken }) => {
   const [email, setEmail] = useState("");

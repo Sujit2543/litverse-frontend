@@ -15,7 +15,7 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
   const [isAdminLogin, setIsAdminLogin] = useState(false);
   const [loginMethod, setLoginMethod] = useState('email'); // 'email', 'google', 'facebook', 'mobile', 'email-otp'
   const API_URL = process.env.NODE_ENV === 'production' 
-    ? "https://your-backend.vercel.app" 
+    ? "https://litverse-backend.vercel.app" 
     : "http://localhost:5000";
 
   // ✅ Email validation function (same as Register)
