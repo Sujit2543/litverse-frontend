@@ -14,9 +14,8 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
   const [resetMessage, setResetMessage] = useState("");
   const [isAdminLogin, setIsAdminLogin] = useState(false);
   const [loginMethod, setLoginMethod] = useState('email'); // 'email', 'google', 'facebook', 'mobile', 'email-otp'
-  const API_URL = process.env.NODE_ENV === 'production' 
-    ? "https://litverse-backend.vercel.app" 
-    : "http://localhost:5000";
+  // const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = "https://litverse-backend.vercel.app";
 
   // ✅ Email validation function (same as Register)
   const isValidEmail = (email) => {
@@ -134,13 +133,14 @@ export default function LoginPage({ onLogin, onGoToRegister }) {
           const userName = userData ? userData.firstName : email.split('@')[0];
           if (onLogin) onLogin(userName, false);
         }
+        setLoading(false);
       } else {
         setError(data.message || "Login failed. Try again.");
+        setLoading(false);
       }
     } catch (err) {
       console.error("Login error:", err);
       setError("Server error. Please try again later.");
-    } finally {
       setLoading(false);
     }
   };
