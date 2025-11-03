@@ -84,8 +84,7 @@ const Register = ({ onBackToLogin }) => {
     }
 
     try {
-      // const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-        const API_URL = "https://litverse-backend.vercel.app";
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
       
       const response = await fetch(`${API_URL}/register`, {
         method: "POST",
@@ -292,7 +291,7 @@ const Register = ({ onBackToLogin }) => {
               <p className="text-gray-600 mb-4">Sign up with your Google account</p>
               <button
                 type="button"
-                onClick={() => window.open(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/auth/google`, '_self')}
+                onClick={() => window.open('http://localhost:5000/auth/google', '_self')}
                 className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
               >
                 <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
